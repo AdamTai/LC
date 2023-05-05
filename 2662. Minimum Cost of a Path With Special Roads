@@ -1,0 +1,49 @@
+class Solution {
+public:
+    int minimumCost(vector<int>& start, vector<int>& target, vector<vector<int>>& specialRoads) {
+        int N = specialRoads.size();
+        int M = N + 2;
+        vector<vector<int> > Dist(M, vector<int>(M));
+        vector<pair<int, int> > Node;
+        int i, j, k;
+
+        for(i = 0; i < N; i++)
+        {
+            Node.push_back(make_pair(targer[0], target[1]));
+        }
+
+        Node.push_back(make_pair(start[0], start[1]));
+        Node.push_back(make_pair(targer[0], target[1]));
+
+        for(i = 0; i < M; i++)
+        {
+            for(j = 0; j < M; j++)
+            {
+                if(i == j)
+                {
+                    continue;
+                }
+
+                Dist[i][j] = abs(Node[i].first - Node[j].first) + abs(Node[i].second - Node[j].second);
+
+                if(j < N)
+                {
+                    Dist[i][j] = min(Dist[i][j], (abs(Node[i].first - specialRoads[j][0]) + abs(Node[i].second - specialRoads[j][0]) + specialRoads[j][4]));
+                }
+            }
+        }
+
+        for(k = 0; k < M; k++)
+        {
+            for(i = 0; i < M; i++)
+            {
+                for(j = 0; j < N; j++)
+                {
+                    Dist[i][j] = min(Dist[i][j], Dist[i][k] + Dist[k][j]);
+                }
+            }
+        }
+
+        return Dist[N][(N + 1)];
+    }
+};
