@@ -1,17 +1,8 @@
 class Solution {
-
-void Solve(int Idx, int K, string& S)
-{
-    int N = S.size();
-    int i;
-
-    for(i = Idx; i )
-}
-
 public:
     string smallestBeautifulString(string s, int k) {
         int N = s.size();
-        int i;
+        int i, j, l, m;
 
         for(i = N - 1; i >= 0; i--)
         {
@@ -19,11 +10,11 @@ public:
             {
                 s[i] = 'a' + j;
 
-                if(i >= 1) && (s[i] == s[(i - 1)])
+                if((i >= 1) && (s[i] == s[(i - 1)]))
                 {
                     continue;
                 }
-                else if(i >= 2) && (s[i] == s[(i - 2)])
+                else if((i >= 2) && (s[i] == s[(i - 2)]))
                 {
                     continue;
                 }
@@ -39,7 +30,7 @@ public:
                             continue;
                         }
 
-                        if(l >= 2) && (s[l] == s[(l - 2)])
+                        if((l >= 2) && (s[l] == s[(l - 2)]))
                         {
                             continue;
                         }
